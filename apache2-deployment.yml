@@ -27,13 +27,31 @@ kind: Service
 metadata:
   name: apache2-service
 spec:
-  type: NodePort
   selector:
     app: apache2
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 30080
     name: apache
-
+---
+apiVersion: v1
+kind: Route
+metadata:
+  name: apache2-route
+  labels:
+    ccs.ornl.gov/externalRoute: 'false'
+  annotations:
+    ccs.ornl.gov/requireAuth: 'true'
+    openshift.io/host.generated: 'true'
+spec:
+  host: apache2.apps.marble.ccs.ornl.gov
+  to:
+    kind: Service
+    name: apache2-service
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+  port:
+    targetPort: apache
+  wildcardPolicy: None
