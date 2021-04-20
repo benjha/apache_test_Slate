@@ -1,4 +1,4 @@
-FROM ubuntu/apache2
+FROM ubuntu:bionic
 
 ### update
 RUN apt-get -q update
