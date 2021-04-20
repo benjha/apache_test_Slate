@@ -15,27 +15,12 @@ spec:
     spec:
       containers:
       - name: apache2
-        image: ubuntu/apache2:latest
-        volumeMounts:
-        - name: apache2-config-volume
-          mountPath: /etc/apache2/apache2.conf
-          subPath: apache2.conf
-        - name: apache2-config-volume
-          mountPath: /srv/www/index.html
-          subPath: index.html
+        image: image-registry.openshift-image-registry.svc:5000/gen150-app/apachetestslate
         ports:
         - containerPort: 80
           name: apache2
           protocol: TCP
-      volumes:
-        - name: apache2-config-volume
-          configMap:
-            name: apache2-config
-            items:
-            - key: apache2
-              path: apache2.conf
-            - key: apache2-site
-              path: index.html
+        stdin: true
 ---
 apiVersion: v1
 kind: Service
