@@ -29,4 +29,4 @@ ENV APACHE_LOG_DIR=/apache
 
 #RUN /bin/bash -c "source /etc/apache2/envvars"
 
-CMD ["apachectl", "-DFOREGROUND"]
+CMD ["apachectl", "-D FOREGROUND"]
