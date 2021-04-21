@@ -22,8 +22,10 @@ spec:
           protocol: TCP
         stdin: true
         volumeMounts:
-        - name: app
-          mountPath: "/app"
+        - name: apache
+          mountPath: "/apache"
+        - name: fcgid
+          mountPath: "/fcgid"
         resources:
           limits:
             cpu: 2
@@ -32,9 +34,11 @@ spec:
             cpu: 2
             memory: 2Gi
       volumes:
-      - name: app
+      - name: apache
         persistentVolumeClaim:
           claimName: apache2-pv-claim
+      - name: fcgid
+        emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
