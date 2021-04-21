@@ -18,7 +18,7 @@ RUN apt-get -q -y install  openssh-server git autoconf automake make libtool pkg
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY index.html /srv/www/index.html
 COPY ports.conf /etc/apache2/ports.conf
-#COPY fcgid.conf /etc/apache2/mods-enabled/fcgid.conf
+COPY fcgid.conf /etc/apache2/mods-enabled/fcgid.conf
 
 ENV APACHE_RUN_USER=www-data
 ENV APACHE_RUN_GROUP=www-data
