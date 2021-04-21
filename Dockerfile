@@ -12,8 +12,8 @@ RUN apt-get -q -y install  openssh-server git autoconf automake make libtool pkg
     libgdk-pixbuf2.0-dev libxml2-dev libsqlite3-dev libcairo2-dev libglib2.0-dev g++ libmemcached-dev \
     libjpeg-turbo8-dev htop
 
-#RUN a2enmod rewrite
-#RUN a2enmod fcgid
+RUN a2enmod rewrite
+RUN a2enmod fcgid
 
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY index.html /srv/www/index.html
@@ -27,6 +27,4 @@ ENV APACHE_RUN_DIR=/apache
 ENV APACHE_LOCK_DIR=/apache
 ENV APACHE_LOG_DIR=/apache
 
-#RUN /bin/bash -c "source /etc/apache2/envvars"
-
-CMD ["apachectl", "-D FOREGROUND"]
+#CMD ["apachectl", "-D FOREGROUND"]

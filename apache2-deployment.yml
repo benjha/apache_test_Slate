@@ -16,6 +16,8 @@ spec:
       containers:
       - name: apache2
         image: image-registry.openshift-image-registry.svc:5000/gen150-app/apachetestslate
+        command: ['/bin/sh','-c']
+        args: ['apachectl -D FOREGROUND && cat /apache/error.log']
         ports:
         - containerPort: 8080
           name: apache2
