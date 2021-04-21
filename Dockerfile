@@ -1,4 +1,4 @@
-FROM ubuntu/bionic
+FROM ubuntu:bionic
 
 ### update
 RUN apt-get -q update
