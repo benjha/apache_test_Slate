@@ -17,4 +17,4 @@ COPY index.html /srv/www/index.html
 COPY ports.conf /etc/apache2/ports.conf
 COPY fcgid.conf /etc/apache2/mods-enabled/fcgid.conf
 
-RUN /bin/bash -c "source /etc/apache2/envvars"
+#RUN /bin/bash -c "source /etc/apache2/envvars"
