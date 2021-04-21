@@ -15,5 +15,6 @@ RUN apt-get -q -y install  openssh-server git autoconf automake make libtool pkg
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY index.html /srv/www/index.html
 COPY ports.conf /etc/apache2/ports.conf
+COPY fcgid.conf /etc/apache2/mods-enabled/fcgid.conf
 
 RUN /bin/bash -c "source /etc/apache2/envvars"

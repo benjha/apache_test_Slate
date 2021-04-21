@@ -21,6 +21,20 @@ spec:
           name: apache2
           protocol: TCP
         stdin: true
+        volumeMounts:
+        - name: app
+          mountPath: "/app"
+        resources:
+          limits:
+            cpu: 2
+            memory: 2Gi
+          requests:
+            cpu: 2
+            memory: 2Gi
+      volumes:
+      - name: app
+        persistentVolumeClaim:
+          claimName: apache2-pv-claim
 ---
 apiVersion: v1
 kind: Service
@@ -55,3 +69,15 @@ spec:
   port:
     targetPort: apache
   wildcardPolicy: None
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: apache2-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
