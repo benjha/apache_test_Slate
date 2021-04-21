@@ -16,6 +16,8 @@ spec:
       containers:
       - name: apache2
         image: image-registry.openshift-image-registry.svc:5000/gen150-app/apachetestslate
+        command: ['/bin/bash','-c']
+        args: ['bash']
         ports:
         - containerPort: 8080
           name: apache2
@@ -76,8 +78,7 @@ metadata:
   name: apache2-pv-claim
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 2Gi
-
+      storage: 1Gi
