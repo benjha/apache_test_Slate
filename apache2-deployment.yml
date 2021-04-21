@@ -17,7 +17,7 @@ spec:
       - name: apache2
         image: image-registry.openshift-image-registry.svc:5000/gen150-app/apachetestslate
         command: ['/bin/bash','-c']
-        args: ['bash']
+        args: ['bash'] 
         ports:
         - containerPort: 8080
           name: apache2
